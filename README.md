@@ -1,4 +1,11 @@
-# 2D Face Alignment using CNN on AFLW2000.
+# 2D Face Alignment using CNN on AFLW2000
+
+### Libraries
+
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.4.1-brightgreen)
+![TFDS](https://img.shields.io/badge/TFDS-nightly-brightgreen)
+
+### Motivation
 
 [AFLW2000-3D](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/projects/3DDFA/main.htm) is a dataset of 2000 images that have been annotated with image-level 68-point 3D facial landmarks. This dataset is typically used for evaluation of 3D facial landmark detection models.
 It contains diverse head poses and can be used to guess invinsible landmarks in 3D space. 
