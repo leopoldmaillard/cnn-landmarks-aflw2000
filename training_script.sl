@@ -7,7 +7,7 @@
 #SBATCH --time 03:00:00
 
 # RAM to use (Mo)
-#SBATCH --mem 30000
+#SBATCH --mem 50000
 
 # Number of cpu core to use
 #SBATCH --cpus-per-task=10
