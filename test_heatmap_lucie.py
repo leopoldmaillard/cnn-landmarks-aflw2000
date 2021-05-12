@@ -196,5 +196,9 @@ loss_object = tf.keras.losses.mean_squared_error
 model.compile(optimizer, loss_object)
 model.summary()
 
-history = model.fit(ds_train, epochs=10, validation_data=ds_test)
+history = model.fit(ds_train, epochs=40, validation_data=ds_test)
 
+import pandas as pd
+pd.DataFrame.from_dict(history.history).to_csv('history_lucie.csv',index=False)
+
+model.save_weights('model_heatmaps_lucie.h5')
