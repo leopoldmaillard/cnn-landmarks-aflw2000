@@ -10,7 +10,7 @@ Original file is located at
 
 ## A Detailed Look At CNN-based Approaches In Facial Landmark Detection
 """
-
+import os
 import tensorflow_datasets as tfds
 import tensorflow as tf
 import numpy as np
@@ -87,10 +87,10 @@ def generate_heatmaps(norm_marks, map_size=(64, 64), sigma=3):
             heatmap = generate_heatmap(map_size, (x, y), sigma)
             maps.append(heatmap)
             heatmaps = np.array(maps, dtype=np.float32)
-            heatmaps = np.swapaxes(maps, 0, 2)
-            heatmaps = np.swapaxes(maps, 0, 1)
+            #heatmaps = np.swapaxes(maps, 0, 2)
+            #heatmaps = np.swapaxes(maps, 0, 1)
         
-        return heatmaps
+        return np.einsum('kij->ijk', heatmaps)
 
 def map_gaussian(landmarks):
     heatmaps = generate_heatmaps(landmarks, IMG_SIZE)
@@ -200,7 +200,7 @@ loss_object = tf.keras.losses.mean_squared_error
 
 model.compile(optimizer, loss_object)
 
-history = model.fit(ds_train, epochs=10, validation_data=ds_test)
+history = model.fit(ds_train, epochs=20, validation_data=ds_test)
 
 import pandas as pd
 
