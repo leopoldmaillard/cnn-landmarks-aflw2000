@@ -111,7 +111,7 @@ resize_and_rescale = tf.keras.Sequential([
 
 ds_train = ds_train.map(lambda x: (resize_and_rescale(x['image']), tf.reshape(tf_map_gaussian(x['landmarks_68_3d_xy_normalized']), (IMG_SIZE[0], IMG_SIZE[1],68))), num_parallel_calls=tf.data.experimental.AUTOTUNE)
 ds_train = ds_train.cache()
-ds_train = ds_train.shuffle(100)
+ds_train = ds_train.shuffle(1000)
 ds_train = ds_train.batch(16)
 ds_train = ds_train.prefetch(tf.data.experimental.AUTOTUNE)
 
@@ -200,7 +200,7 @@ loss_object = tf.keras.losses.mean_squared_error
 
 model.compile(optimizer, loss_object)
 
-history = model.fit(ds_train, epochs=20, validation_data=ds_test)
+history = model.fit(ds_train, epochs=30, validation_data=ds_test)
 
 import pandas as pd
 
