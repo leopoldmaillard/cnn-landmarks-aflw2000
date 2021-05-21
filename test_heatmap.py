@@ -200,7 +200,7 @@ loss_object = tf.keras.losses.mean_squared_error
 
 model.compile(optimizer, loss_object)
 
-history = model.fit(ds_train, epochs=30, validation_data=ds_test)
+history = model.fit(ds_train, epochs=50, validation_data=ds_test)
 
 import pandas as pd
 
